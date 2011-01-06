@@ -71,21 +71,6 @@ class PluploadWidget extends CWidget {
         $pluploadPath = $publicPath . "/" . self::PLUPLOAD_FILE_NAME;
         Yii::app()->clientScript->registerScriptFile($pluploadPath);
 
-        $jQueryQueuePath = $publicPath . "/" . self::JQUERYQUEUE_FILE_NAME;
-        Yii::app()->clientScript->registerScriptFile($jQueryQueuePath);
-
-        $cssPath = $publicPath . "/" . self::PUPLOAD_CSS_PATH;
-        Yii::app()->clientScript->registerCssFile($cssPath);
-
-        if(isset($this->config['jquery_ui']) && $this->config['jquery_ui']) {
-
-            $jQueryUIPath = $publicPath . "/" . self::JQUERYUI_FILE_NAME;
-            Yii::app()->clientScript->registerScriptFile($jQueryUIPath);
-
-            $jQueryUICssPath = $publicPath . "/" . self::JQUERYUI_CSS_PATH;
-            Yii::app()->clientScript->registerCssFile($jQueryUICssPath);
-        }
-
         if(!isset($this->config['flash_swf_url'])) {
 
             $flashUrl = $publicPath . "/" . self::FLASH_FILE_NAME;
@@ -116,6 +101,22 @@ class PluploadWidget extends CWidget {
 
                 Yii::app()->clientScript->registerScriptFile(self::BROWSER_PLUS_URL);
             }
+        }
+
+        if(isset($this->config['jquery_ui']) && $this->config['jquery_ui']) {
+
+            $jQueryUIPath = $publicPath . "/" . self::JQUERYUI_FILE_NAME;
+            Yii::app()->clientScript->registerScriptFile($jQueryUIPath);
+
+            $jQueryUICssPath = $publicPath . "/" . self::JQUERYUI_CSS_PATH;
+            Yii::app()->clientScript->registerCssFile($jQueryUICssPath);
+        } else {
+
+            $jQueryQueuePath = $publicPath . "/" . self::JQUERYQUEUE_FILE_NAME;
+            Yii::app()->clientScript->registerScriptFile($jQueryQueuePath);
+
+            $cssPath = $publicPath . "/" . self::PUPLOAD_CSS_PATH;
+            Yii::app()->clientScript->registerCssFile($cssPath);
         }
 
         if(isset($this->config['language'])) {
