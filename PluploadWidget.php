@@ -55,6 +55,7 @@ class PluploadWidget extends CWidget {
     const SILVERLIGHT_FILE_NAME = 'plupload.silverlight.xap';
     const DEFAULT_RUNTIMES      = 'gears,flash,silverlight,browserplus,html5';
     const PUPLOAD_CSS_PATH      = 'css/plupload.queue.css';
+    const JQUERYUI_CSS_PATH     = 'css/jquery.ui.plupload.css';
     const I18N_DIR_NAME         = 'i18n';
 
     public $config = array();
@@ -80,6 +81,9 @@ class PluploadWidget extends CWidget {
 
             $jQueryUIPath = $publicPath . "/" . self::JQUERYUI_FILE_NAME;
             Yii::app()->clientScript->registerScriptFile($jQueryUIPath);
+
+            $jQueryUICssPath = $publicPath . "/" . self::JQUERYUI_CSS_PATH;
+            Yii::app()->clientScript->registerCssFile($jQueryUICssPath);
         }
 
         if(!isset($this->config['flash_swf_url'])) {
