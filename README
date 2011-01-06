@@ -1,15 +1,16 @@
 This is an update to the Yii plupload extension found here:
 http://www.yiiframework.com/extension/pupload/
 
-Here are the list of changes:
+Here is the list of changes:
 
-    * Updated Plupload to v1.2.3
+    * Updated Plupload to v1.3.0
     * Fixed the DIRECTORY_SEPARATOR problem (to be checked, I'm not working with Windows presently)
     * Added language option to config, to be used as 'language' => Yii::app()->language (see the example below). There are 3 supported languages in the i18n folder, but you can find more langauges in their forum http://www.plupload.com/punbb/viewforum.php?id=5
     * Added max_file_number option to config, to limit the number of files (implemented as suggested here http://www.plupload.com/punbb/viewtopic.php?id=113 )
     * Added autostart option to config, to autostart the upload after choosing files (implemented as suggested here http://www.plupload.com/punbb/viewtopic.php?id=90 )
     * Added reset_after_upload to config, option to reset the file dialog after the upload is complete (implemented as suggested here http://www.plupload.com/punbb/viewtopic.php?id=192 )
     * Added callbacks array, to be able to specify javascript callbacks for Plupload's Public Events (see documentation: http://www.plupload.com/plupload/docs/api/index.html#class_plupload.Uploader.html )
+    * Added jquery_ui to config, option to enable the jQuery UI theme (see: http://www.plupload.com/example_jquery_ui.php)
 
 Here is an example of use with the new options:
 
@@ -27,6 +28,7 @@ Here is an example of use with the new options:
              'language' => Yii::app()->language,
              'max_file_number' => 1,
              'autostart' => true,
+             'jquery_ui' => false,
              'reset_after_upload' => true,
          ),
          'callbacks' => array(

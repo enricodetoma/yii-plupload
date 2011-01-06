@@ -48,6 +48,7 @@ class PluploadWidget extends CWidget {
     const ASSETS_DIR_NAME       = 'assets';
     const PLUPLOAD_FILE_NAME    = 'plupload.full.min.js';
     const JQUERYQUEUE_FILE_NAME = 'jquery.plupload.queue.min.js';
+    const JQUERYUI_FILE_NAME    = 'jquery.ui.plupload.min.js';
     const GEARS_FILE_NAME       = 'gears_init.js';
     const BROWSER_PLUS_URL      = 'http://bp.yahooapis.com/2.4.21/browserplus-min.js';
     const FLASH_FILE_NAME       = 'plupload.flash.swf';
@@ -74,6 +75,12 @@ class PluploadWidget extends CWidget {
 
         $cssPath = $publicPath . "/" . self::PUPLOAD_CSS_PATH;
         Yii::app()->clientScript->registerCssFile($cssPath);
+
+        if(isset($this->config['jquery_ui']) && $this->config['jquery_ui']) {
+
+            $jQueryUIPath = $publicPath . "/" . self::JQUERYUI_FILE_NAME;
+            Yii::app()->clientScript->registerScriptFile($jQueryUIPath);
+        }
 
         if(!isset($this->config['flash_swf_url'])) {
 
