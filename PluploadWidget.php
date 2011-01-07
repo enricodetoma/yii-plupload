@@ -103,7 +103,8 @@ class PluploadWidget extends CWidget {
         $pluploadPath = $publicPath . "/" . self::PLUPLOAD_FILE_NAME;
         Yii::app()->clientScript->registerScriptFile($pluploadPath);
 
-        if(isset($this->config['jquery_ui']) && $this->config['jquery_ui']) {
+        $use_jquery_ui = (isset($this->config['jquery_ui']) && $this->config['jquery_ui']);
+        if($use_jquery_ui) {
 
             $jQueryUIPath = $publicPath . "/" . self::JQUERYUI_FILE_NAME;
             Yii::app()->clientScript->registerScriptFile($jQueryUIPath);
@@ -153,8 +154,14 @@ class PluploadWidget extends CWidget {
             $file_list_height = $this->config['file_list_height'];
             if ($file_list_height < 20)
                 $file_list_height = 20;
-            $css .= ".plupload_scroll .plupload_filelist { height:".$file_list_height."px; }\n".
-                    "li.plupload_droptext {line-height: ".($file_list_height-20)."px;}\n";
+            if ($use_jquery_ui) {
+                $css .= ".plupload_scroll { max-height:".$file_list_height."px; min-height:".$file_list_height."px; }\n".
+                        ".plupload_scroll .plupload_filelist table { height:".$file_list_height."px; }\n".
+                        ".plupload_droptext {line-height: ".($file_list_height-20)."px;}\n";
+            } else {
+                $css .= ".plupload_scroll .plupload_filelist { height:".$file_list_height."px; }\n".
+                        "li.plupload_droptext {line-height: ".($file_list_height-20)."px;}\n";
+            }
             unset($this->config['file_list_height']);
         }
 
