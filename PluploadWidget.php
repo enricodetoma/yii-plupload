@@ -68,9 +68,6 @@ class PluploadWidget extends CWidget {
         $localPath = dirname(__FILE__) . "/" . self::ASSETS_DIR_NAME;
         $publicPath = Yii::app()->getAssetManager()->publish($localPath);
 
-        $pluploadPath = $publicPath . "/" . self::PLUPLOAD_FILE_NAME;
-        Yii::app()->clientScript->registerScriptFile($pluploadPath);
-
         if(!isset($this->config['flash_swf_url'])) {
 
             $flashUrl = $publicPath . "/" . self::FLASH_FILE_NAME;
@@ -102,6 +99,9 @@ class PluploadWidget extends CWidget {
                 Yii::app()->clientScript->registerScriptFile(self::BROWSER_PLUS_URL);
             }
         }
+
+        $pluploadPath = $publicPath . "/" . self::PLUPLOAD_FILE_NAME;
+        Yii::app()->clientScript->registerScriptFile($pluploadPath);
 
         if(isset($this->config['jquery_ui']) && $this->config['jquery_ui']) {
 
