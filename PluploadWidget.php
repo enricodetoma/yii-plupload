@@ -157,7 +157,7 @@ class PluploadWidget extends CWidget {
             if ($use_jquery_ui) {
                 $css .= ".plupload_scroll { max-height:".$file_list_height."px; min-height:".$file_list_height."px; }\n".
                         ".plupload_scroll .plupload_filelist table { height:".$file_list_height."px; }\n".
-                        ".plupload_droptext {line-height: ".($file_list_height-20)."px;}\n";
+                        ".plupload_droptext {line-height: ".$file_list_height."px;}\n";
             } else {
                 $css .= ".plupload_scroll .plupload_filelist { height:".$file_list_height."px; }\n".
                         "li.plupload_droptext {line-height: ".($file_list_height-20)."px;}\n";
